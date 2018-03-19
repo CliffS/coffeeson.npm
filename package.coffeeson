@@ -9,7 +9,7 @@ contributors: [
 name: 'coffeeson'
 description: 'Like json, but with coffee script'
 homepage: 'http://github.com/CliffS/coffeeson.npm'
-version: '1.0.0'
+version: '1.0.1'
 
 repository:
   type: 'git'
@@ -33,6 +33,9 @@ directories:
   lib: 'lib'
 
 main: "./lib/coffeeson"
+
+bin:
+  coffeeson: "lib/cli.js"
 
 scripts:
   test: 'echo \"Error: no test specified\" && exit 1'
