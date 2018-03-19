@@ -12,7 +12,7 @@
   "name": "coffeeson",
   "description": "Like json, but with coffee script",
   "homepage": "http://github.com/CliffS/coffeeson.npm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/CliffS/coffeeson.npm.git"
@@ -20,10 +20,7 @@
   "bugs": {
     "url": "http://github.com/CliffS/coffeeson.npm/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "http://creativecommons.org/licenses/MIT/"
-  },
+  "license": "MIT",
   "keywords": [
     "javascript",
     "coffeescript",
@@ -47,7 +44,8 @@
     "node": ">= 0.4.10"
   },
   "dependencies": {
-    "coffeescript": ">=2.2.3"
+    "coffeescript": ">=2.2.3",
+    "getopts": "^2.0.5"
   },
   "devDependencies": {}
 }
