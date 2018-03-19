@@ -1,4 +1,4 @@
-coffee = require 'coffee-script'
+coffee = require 'coffeescript'
 fs     = require 'fs'
 
 
@@ -12,9 +12,9 @@ parse = (src) ->
 
 # Parse a coffeeson file and return a JS native object
 parseFile = (name, cb) ->
-  fs.readFile name, (err, src) ->
-    return cb err if err
-    cb no, parse(src)
+  new Promise (resolve, reject) =>
+    fs.readFile name, (err, src) ->
+      if err then reject err else resolve parse src
 
 # Parse a coffeeson string and return JSON
 toJSON = (src, replacer, spacer) ->
@@ -25,29 +25,26 @@ toJSON.pretty = (src, replacer) ->
   toJSON src, replacer, 2
 
 # Asynchronously read a file and callback with the content as JSON
-fileToJSON = (name, args..., cb) ->
-  fs.readFile name, (err, src) ->
-    if cb
-      return cb err if err
-      cb no, toJSON(src, args...)
-  return
+fileToJSON = (name, args...) ->
+  new Promise (resolve, reject) =>
+    fs.readFile name, (err, src) ->
+      if err then reject err else resolve toJSON src, args...
 
 # Asynchronously read a file and callback with the content as pretty JSON
-fileToJSON.pretty = (name, cb) ->
-  fileToJSON name, null, 2, cb
+fileToJSON.pretty = (name) ->
+  fileToJSON name, null, 2
 
 # Asynchronously read a file and save a .json file right next the source file
-convertFile = (name, args..., cb) ->
-  fileToJSON name, args..., (err, json) ->
-    fs.writeFile name.replace(/\.coffeeson$/, '.json'), json, (err) ->
-      if cb
-        return cb err if err
-        cb no, json
-  return
+convertFile = (name, args...) ->
+  new Promise (resolve, reject) =>
+    fileToJSON name, args...
+    .then (json) =>
+      fs.writeFile name.replace(/\.[^.]+$/, '.json'), json, (err) =>
+        if err then reject err else resolve json
 
 # Asynchronously read a file and save a pretty .json file right next the source file
-convertFile.pretty = (name, cb) ->
-  convertFile name, null, 2, cb
+convertFile.pretty = (name) ->
+  convertFile name, null, 2
 
 # Export methods
 module.exports = {
