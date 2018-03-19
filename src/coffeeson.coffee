@@ -36,9 +36,9 @@ fileToJSON.pretty = (name) ->
 
 # Asynchronously read a file and save a .json file right next the source file
 convertFile = (name, args...) ->
-  new Promise (resolve, reject) =>
-    fileToJSON name, args...
-    .then (json) =>
+  fileToJSON name, args...
+  .then (json) =>
+    new Promise (resolve, reject) =>
       fs.writeFile name.replace(/\.[^.]+$/, '.json'), json, (err) =>
         if err then reject err else resolve json
 

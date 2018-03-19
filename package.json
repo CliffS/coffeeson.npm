@@ -28,13 +28,19 @@
   },
   "main": "./lib/coffeeson",
   "scripts": {
-    "test": "cake test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "coffee --compile --output lib src",
+    "watch": "coffee --compile --output lib --watch src &"
+  },
+  "bin": {
+    "coffeeson": "lib/cli"
   },
   "engines": {
     "node": ">= 0.4.10"
   },
   "dependencies": {
-    "coffeescript": "^2.2.3"
+    "coffeescript": "^2.2.3",
+    "getopts": "^2.0.5"
   },
   "devDependencies": {}
 }
