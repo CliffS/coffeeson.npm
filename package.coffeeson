@@ -9,7 +9,7 @@ contributors: [
 name: 'coffeeson'
 description: 'Like json, but with coffee script'
 homepage: 'http://github.com/CliffS/coffeeson.npm'
-version: '1.0.1'
+version: '1.0.2'
 
 repository:
   type: 'git'
@@ -41,7 +41,7 @@ scripts:
   test: 'echo \"Error: no test specified\" && exit 1'
   build: 'coffee --compile --output lib src'
   watch: 'coffee --compile --output lib --watch src &'
-  prepublishOnly: 'npm build'
+  prepublishOnly: "npm run build; perl -i -p -E 's{^}{#!/usr/bin/env node\\n\\n} if 1 .. 1' lib/cli.js"
 
 engines:
   node: '>= 0.4.10'
