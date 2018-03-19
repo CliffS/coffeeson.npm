@@ -1,22 +1,29 @@
 {
-  "author": "Alex Wayne (alexwayne.tumblr.com)",
-  "name": "coffeeson",
-  "description": "Like json, but with coffee script",
-  "homepage": "http://github.com/Squeegy/coffeeson.npm",
-  "version": "0.1.0",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Squeegy/coffeeson.npm.git"
+  "author": {
+    "name": "Alex Wayne",
+    "url": "alexwayne.tumblr.com"
   },
-  "bugs": {
-    "url": "http://github.com/Squeegy/coffeeson.npm/issues"
-  },
-  "licenses": [
+  "contributors": [
     {
-      "type": "MIT",
-      "url": "http://creativecommons.org/licenses/MIT/"
+      "name": "Cliff Stanford",
+      "email": "cliff@may.be"
     }
   ],
+  "name": "coffeeson",
+  "description": "Like json, but with coffee script",
+  "homepage": "http://github.com/CliffS/coffeeson.npm",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CliffS/coffeeson.npm.git"
+  },
+  "bugs": {
+    "url": "http://github.com/CliffS/coffeeson.npm/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://creativecommons.org/licenses/MIT/"
+  },
   "keywords": [
     "javascript",
     "coffeescript",
@@ -30,17 +37,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "coffee --compile --output lib src",
-    "watch": "coffee --compile --output lib --watch src &"
-  },
-  "bin": {
-    "coffeeson": "lib/cli"
+    "watch": "coffee --compile --output lib --watch src &",
+    "prepublishOnly": "npm build"
   },
   "engines": {
     "node": ">= 0.4.10"
   },
   "dependencies": {
-    "coffeescript": "^2.2.3",
-    "getopts": "^2.0.5"
+    "coffeescript": ">=2.2.3"
   },
   "devDependencies": {}
 }
