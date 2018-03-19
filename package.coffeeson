@@ -9,7 +9,7 @@ contributors: [
 name: 'coffeeson'
 description: 'Like json, but with coffee script'
 homepage: 'http://github.com/CliffS/coffeeson.npm'
-version: '0.2.0'
+version: '1.0.0'
 
 repository:
   type: 'git'
